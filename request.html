@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Request a Delivery — DokDrop</title>
+<meta name="description" content="Submit a concierge provisioning request to DokDrop: vessel details, delivery window, and what you need — sourced and delivered dockside or to anchor.">
+<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container nav-row">
+    <a href="index.html" class="brand" aria-label="DokDrop home">
+      <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="17" stroke="currentColor" stroke-width="1"/><text x="20" y="27" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="19" font-style="italic" fill="currentColor">D</text></svg>
+      <span class="brand-word">Dok<em>Drop</em></span>
+    </a>
+    <div class="nav-cta">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-links" id="nav-links" aria-label="Primary">
+  <div class="nav-links-inner">
+    <a href="index.html">Home</a>
+    <a href="how-it-works.html">How It Works<sup class="rn">I</sup></a>
+    <a href="services.html">Services<sup class="rn">II</sup></a>
+    <a href="about.html">About<sup class="rn">III</sup></a>
+    <a href="contact.html">Contact<sup class="rn">IV</sup></a>
+    <div class="nav-links-cta">
+      <a href="request.html" class="btn btn-primary">Request Delivery</a>
+      <a href="tel:+13055550123" class="btn btn-outline">(305) 555-0123</a>
+    </div>
+    <p class="coord" style="margin-top:var(--sp-7);">25°46'12" N · 80°08'13" W — MIAMI, FLORIDA</p>
+  </div>
+</nav>
+
+<main id="main">
+
+  <section class="fb fb-tight dark-section grain overlap-header" style="background:var(--ink-950);">
+    <div class="container">
+      <p class="coord" style="margin-bottom:var(--sp-6);">CONCIERGE REQUEST · IV</p>
+      <h1 class="h1-cinematic reveal-cinematic" style="max-width:15ch;">Tell us what's aboard — and what isn't.</h1>
+      <p class="lede reveal-cinematic" style="max-width:56ch; margin-top:var(--sp-6); color:var(--color-text-on-dark-muted);">Fill in the vessel, the window, and what you need. A concierge confirms pricing and availability within 15 minutes during desk hours.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="two-col two-col-form">
+
+        <form id="request-form" novalidate>
+          <div class="form-grid">
+
+            <div class="field full">
+              <label for="vessel-name">Vessel name<span aria-hidden="true"> *</span></label>
+              <input type="text" id="vessel-name" name="vessel-name" required placeholder="e.g. Sea Fable">
+              <span class="error-msg">Please enter the vessel name.</span>
+            </div>
+
+            <div class="field">
+              <label for="vessel-loa">Length overall (LOA)</label>
+              <input type="text" id="vessel-loa" name="vessel-loa" placeholder="e.g. 124 ft">
+            </div>
+
+            <div class="field">
+              <label for="guest-count">Guests aboard</label>
+              <input type="text" id="guest-count" name="guest-count" placeholder="e.g. 8 guests, 6 crew">
+            </div>
+
+            <div class="field full">
+              <label>Delivery type<span aria-hidden="true"> *</span></label>
+              <div class="pill-group" role="radiogroup" aria-required="true">
+                <span class="pill-choice">
+                  <input type="radio" id="type-dock" name="delivery-type" value="Dockside" required checked>
+                  <label for="type-dock">Dockside</label>
+                </span>
+                <span class="pill-choice">
+                  <input type="radio" id="type-anchor" name="delivery-type" value="At anchor" required>
+                  <label for="type-anchor">At anchor</label>
+                </span>
+              </div>
+            </div>
+
+            <div class="field full">
+              <label for="location">Marina &amp; slip, or anchor coordinates<span aria-hidden="true"> *</span></label>
+              <input type="text" id="location" name="location" required placeholder="e.g. Miami Beach Marina, Slip 14 — or 25.7617° N, 80.1918° W">
+              <span class="hint">If at anchor, share approximate coordinates or a description of your position.</span>
+              <span class="error-msg">Please share your marina/slip or anchor location.</span>
+            </div>
+
+            <div class="field">
+              <label for="delivery-date">Delivery date<span aria-hidden="true"> *</span></label>
+              <input type="date" id="delivery-date" name="delivery-date" required>
+              <span class="error-msg">Please choose a delivery date.</span>
+            </div>
+
+            <div class="field">
+              <label for="delivery-time">Preferred time</label>
+              <input type="time" id="delivery-time" name="delivery-time">
+            </div>
+
+            <div class="field full">
+              <label>Urgency<span aria-hidden="true"> *</span></label>
+              <div class="pill-group" role="radiogroup" aria-required="true">
+                <span class="pill-choice">
+                  <input type="radio" id="urgency-standard" name="urgency" value="Standard (2-4 hr)" required checked>
+                  <label for="urgency-standard">Standard (2–4 hr)</label>
+                </span>
+                <span class="pill-choice">
+                  <input type="radio" id="urgency-rush" name="urgency" value="Rush (under 90 min)" required>
+                  <label for="urgency-rush">Rush (under 90 min)</label>
+                </span>
+              </div>
+            </div>
+
+            <div class="field full">
+              <label>Categories needed</label>
+              <div class="pill-group">
+                <span class="pill-choice">
+                  <input type="checkbox" id="cat-galley" name="categories" value="Galley Provisioning">
+                  <label for="cat-galley">Galley Provisioning</label>
+                </span>
+                <span class="pill-choice">
+                  <input type="checkbox" id="cat-deck" name="categories" value="Deck & Maintenance">
+                  <label for="cat-deck">Deck &amp; Maintenance</label>
+                </span>
+                <span class="pill-choice">
+                  <input type="checkbox" id="cat-technical" name="categories" value="Technical & Parts">
+                  <label for="cat-technical">Technical &amp; Parts</label>
+                </span>
+                <span class="pill-choice">
+                  <input type="checkbox" id="cat-guest" name="categories" value="Guest & Owner Amenities">
+                  <label for="cat-guest">Guest Amenities</label>
+                </span>
+                <span class="pill-choice">
+                  <input type="checkbox" id="cat-fuel" name="categories" value="Fuel, Water & Ice">
+                  <label for="cat-fuel">Fuel, Water &amp; Ice</label>
+                </span>
+                <span class="pill-choice">
+                  <input type="checkbox" id="cat-other" name="categories" value="Other">
+                  <label for="cat-other">Other</label>
+                </span>
+              </div>
+            </div>
+
+            <div class="field full">
+              <label for="order-details">What do you need?<span aria-hidden="true"> *</span></label>
+              <textarea id="order-details" name="order-details" required placeholder="List items, quantities, brands or substitutions — or paste your order as-is."></textarea>
+              <span class="error-msg">Let us know what to source.</span>
+            </div>
+
+            <div class="field">
+              <label for="contact-name">Your name<span aria-hidden="true"> *</span></label>
+              <input type="text" id="contact-name" name="contact-name" required placeholder="Full name">
+              <span class="error-msg">Please enter your name.</span>
+            </div>
+
+            <div class="field">
+              <label for="contact-role">Role</label>
+              <select id="contact-role" name="contact-role">
+                <option value="Captain">Captain</option>
+                <option value="Crew">Crew</option>
+                <option value="Purser/Stew">Purser / Chief Stew</option>
+                <option value="Owner">Owner</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="contact-phone">Phone<span aria-hidden="true"> *</span></label>
+              <input type="tel" id="contact-phone" name="contact-phone" required placeholder="(305) 555-0100">
+              <span class="error-msg">Please enter a phone number.</span>
+            </div>
+
+            <div class="field">
+              <label for="contact-email">Email<span aria-hidden="true"> *</span></label>
+              <input type="email" id="contact-email" name="contact-email" required placeholder="you@vessel.com">
+              <span class="error-msg">Please enter a valid email.</span>
+            </div>
+
+            <div class="field full">
+              <label for="access-notes">Access notes <span class="hint">(optional)</span></label>
+              <textarea id="access-notes" name="access-notes" placeholder="Gate codes, dock contact, tender pickup point, or anything the delivery crew should know."></textarea>
+            </div>
+
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block" style="margin-top:var(--sp-6);">Send Request</button>
+
+          <div class="form-status" id="form-status" tabindex="-1">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Request received. Your concierge will confirm pricing and timing shortly — by phone or email.</span>
+          </div>
+        </form>
+
+        <aside>
+          <div class="card" style="background:var(--ink-900); color:var(--white); border:none;">
+            <h4 style="color:var(--white);">What happens next</h4>
+            <ul class="list-check" style="margin-top:var(--sp-5);">
+              <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="color:var(--color-text-on-dark-muted);">Concierge confirms pricing &amp; availability, usually within 15 minutes.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="color:var(--color-text-on-dark-muted);">We source from vetted purveyors and stage everything at the supply dock.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="color:var(--color-text-on-dark-muted);">Delivered dockside or to anchor within your confirmed window.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="color:var(--color-text-on-dark-muted);">Photo confirmation and itemized receipt sent once aboard.</span></li>
+            </ul>
+          </div>
+
+          <div class="card" style="margin-top:var(--sp-5);">
+            <h4>Prefer to call it in?</h4>
+            <p style="margin-top:var(--sp-3);">Our concierge desk is staffed daily, 7am–11pm.</p>
+            <a href="tel:+13055550123" class="btn btn-outline btn-block" style="margin-top:var(--sp-5);">(305) 555-0123</a>
+            <a href="mailto:concierge@dokdrop.com" class="btn btn-ghost btn-block" style="margin-top:var(--sp-2);">concierge@dokdrop.com</a>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="mega-footer grain">
+  <div class="container mega-footer-grid">
+    <nav class="mega-footer-nav" aria-label="Footer">
+      <a href="index.html">Home</a>
+      <a href="how-it-works.html">How It Works<sup class="rn">I</sup></a>
+      <a href="services.html">Services<sup class="rn">II</sup></a>
+      <a href="about.html">About<sup class="rn">III</sup></a>
+      <a href="request.html" aria-current="page">Request Delivery<sup class="rn">IV</sup></a>
+      <a href="contact.html">Contact<sup class="rn">V</sup></a>
+    </nav>
+    <div>
+      <div class="mega-footer-meta">
+        <span class="coord">25°46'N 80°08'W</span>
+        <a href="tel:+13055550123">(305) 555-0123</a>
+        <a href="mailto:concierge@dokdrop.com">concierge@dokdrop.com</a>
+        <span>Dockside desk, 7am – 11pm daily</span>
+      </div>
+      <div class="mega-footer-meta">
+        <span style="color:var(--white); font-weight:600;">Service Area</span>
+        <span>Miami Beach Marina</span>
+        <span>Sunset Harbour</span>
+        <span>Key Biscayne &amp; Biscayne Bay</span>
+        <span>Fisher Island Anchorage</span>
+      </div>
+    </div>
+  </div>
+  <div class="container mega-footer-bottom">
+    <span>© 2026 DokDrop. All rights reserved.</span>
+    <span>Miami, Florida — dock &amp; anchor delivery</span>
+  </div>
+</footer>
+
+<button class="scroll-compass" id="scroll-compass" aria-label="Scroll progress — return to top">
+  <svg viewBox="0 0 56 56">
+    <line class="compass-tick" x1="34.47" y1="3.85" x2="33.82" y2="6.27"/>
+    <line class="compass-tick" x1="40.5" y1="6.35" x2="39.25" y2="8.52"/>
+    <line class="compass-tick" x1="45.68" y1="10.32" x2="43.91" y2="12.09"/>
+    <line class="compass-tick" x1="49.65" y1="15.5" x2="47.49" y2="16.75"/>
+    <line class="compass-tick" x1="52.15" y1="21.53" x2="49.73" y2="22.18"/>
+    <line class="compass-tick" x1="52.15" y1="34.47" x2="49.73" y2="33.82"/>
+    <line class="compass-tick" x1="49.65" y1="40.5" x2="47.49" y2="39.25"/>
+    <line class="compass-tick" x1="45.68" y1="45.68" x2="43.91" y2="43.91"/>
+    <line class="compass-tick" x1="40.5" y1="49.65" x2="39.25" y2="47.49"/>
+    <line class="compass-tick" x1="34.47" y1="52.15" x2="33.82" y2="49.73"/>
+    <line class="compass-tick" x1="21.53" y1="52.15" x2="22.18" y2="49.73"/>
+    <line class="compass-tick" x1="15.5" y1="49.65" x2="16.75" y2="47.49"/>
+    <line class="compass-tick" x1="10.32" y1="45.68" x2="12.09" y2="43.91"/>
+    <line class="compass-tick" x1="6.35" y1="40.5" x2="8.52" y2="39.25"/>
+    <line class="compass-tick" x1="3.85" y1="34.47" x2="6.27" y2="33.82"/>
+    <line class="compass-tick" x1="3.85" y1="21.53" x2="6.27" y2="22.18"/>
+    <line class="compass-tick" x1="6.35" y1="15.5" x2="8.52" y2="16.75"/>
+    <line class="compass-tick" x1="10.32" y1="10.32" x2="12.09" y2="12.09"/>
+    <line class="compass-tick" x1="15.5" y1="6.35" x2="16.75" y2="8.52"/>
+    <line class="compass-tick" x1="21.53" y1="3.85" x2="22.18" y2="6.27"/>
+    <line class="compass-tick-major" x1="28" y1="3" x2="28" y2="8"/>
+    <line class="compass-tick-major" x1="53" y1="28" x2="48" y2="28"/>
+    <line class="compass-tick-major" x1="28" y1="53" x2="28" y2="48"/>
+    <line class="compass-tick-major" x1="3" y1="28" x2="8" y2="28"/>
+    <text class="compass-label" x="28" y="17" text-anchor="middle">N</text>
+    <text class="compass-label" x="40" y="31.3" text-anchor="middle">E</text>
+    <text class="compass-label" x="28" y="45.5" text-anchor="middle">S</text>
+    <text class="compass-label" x="16" y="31.3" text-anchor="middle">W</text>
+    <circle class="compass-glow" cx="28" cy="28" r="7"/>
+    <line class="compass-crosshair" x1="22" y1="28" x2="34" y2="28"/>
+    <line class="compass-crosshair" x1="28" y1="22" x2="28" y2="34"/>
+    <g class="compass-pointer" id="compass-pointer">
+      <path d="M28 3 L32 11 L24 11 Z"/>
+    </g>
+  </svg>
+</button>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
