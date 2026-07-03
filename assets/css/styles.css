@@ -493,6 +493,26 @@ p.lede { font-size: 1.15rem; line-height: var(--lh-snug); color: var(--color-tex
 .hero-copy .lede { margin-inline: auto; margin-top: var(--sp-5); text-shadow: 0 1px 12px rgba(244, 240, 234, 0.7); }
 .hero-cta-row { display: flex; justify-content: center; }
 
+/* ---- Wave text — per-letter bounce, adapted from a React "wave-text"
+   component into plain CSS keyframes (no JS/motion library needed) ---- */
+.wave-text { display: inline-flex; }
+.wave-text span {
+  display: inline-block;
+  animation: wave-bounce 1.3s ease-in-out infinite;
+}
+.wave-text span:nth-child(1) { animation-delay: 0.00s; }
+.wave-text span:nth-child(2) { animation-delay: 0.06s; }
+.wave-text span:nth-child(3) { animation-delay: 0.12s; }
+.wave-text span:nth-child(4) { animation-delay: 0.18s; }
+.wave-text span:nth-child(5) { animation-delay: 0.24s; }
+.wave-text span:nth-child(6) { animation-delay: 0.30s; }
+.wave-text span:nth-child(7) { animation-delay: 0.36s; }
+.wave-text span:nth-child(8) { animation-delay: 0.42s; }
+@keyframes wave-bounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-0.14em); }
+}
+
 .hero-visual { position: absolute; inset: 0; z-index: 2; }
 .hero-yacht-photo {
   position: absolute;
@@ -532,7 +552,7 @@ p.lede { font-size: 1.15rem; line-height: var(--lh-snug); color: var(--color-tex
 }
 
 /* ---- Primary button — flat dark crosshair-tag style (matches the pin-tag
-   labels used over the hero chart: solid ink, no gradient/shine) ---- */
+   labels used over the hero chart); gleam sweep applied via .btn-shiny ---- */
 .btn-primary {
   background: var(--ink);
   color: var(--white);
@@ -788,14 +808,16 @@ p.lede { font-size: 1.15rem; line-height: var(--lh-snug); color: var(--color-tex
 }
 
 /* ==========================================================================
-   CTA band — flat, bordered, on-brand panel (no photography)
+   CTA band — engraved panel with cursor-tracked sheen and register marks
    ========================================================================== */
 .cta-band {
   position: relative;
   overflow: hidden;
-  background: var(--slate);
+  background: linear-gradient(155deg, #6d8aa2 0%, var(--slate) 45%, #56718a 100%);
   color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
   min-height: 320px;
   display: flex;
   flex-direction: column;
@@ -806,6 +828,54 @@ p.lede { font-size: 1.15rem; line-height: var(--lh-snug); color: var(--color-tex
 }
 .cta-band-media,
 .cta-band-scrim { display: none; }
+
+/* Cursor-tracked sheen — a soft light following the pointer, not a spotlight */
+.cta-band::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(480px circle at var(--spot-x, 50%) var(--spot-y, 15%), rgba(255, 255, 255, 0.14), transparent 62%);
+  opacity: 0;
+  transition: opacity var(--dur-slow) var(--ease-out);
+  pointer-events: none;
+}
+.cta-band:hover::before { opacity: 1; }
+
+/* Register-mark corners, echoing the hero's chart/compass motif */
+.cta-band-tick {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 0 solid rgba(255, 255, 255, 0.34);
+  opacity: 0.7;
+  transition: transform var(--dur-slow) var(--ease-out), opacity var(--dur-slow) var(--ease-out);
+  pointer-events: none;
+}
+.cta-band-tick-tl { top: var(--sp-5); left: var(--sp-5); border-width: 1px 0 0 1px; }
+.cta-band-tick-tr { top: var(--sp-5); right: var(--sp-5); border-width: 1px 1px 0 0; }
+.cta-band-tick-bl { bottom: var(--sp-5); left: var(--sp-5); border-width: 0 0 1px 1px; }
+.cta-band-tick-br { bottom: var(--sp-5); right: var(--sp-5); border-width: 0 1px 1px 0; }
+.cta-band:hover .cta-band-tick-tl { transform: translate(-3px, -3px); opacity: 1; }
+.cta-band:hover .cta-band-tick-tr { transform: translate(3px, -3px); opacity: 1; }
+.cta-band:hover .cta-band-tick-bl { transform: translate(-3px, 3px); opacity: 1; }
+.cta-band:hover .cta-band-tick-br { transform: translate(3px, 3px); opacity: 1; }
+
+/* Coordinate stamp — quiet nod to the delivery/tracking motif */
+.cta-band-coord {
+  position: absolute;
+  z-index: 2;
+  bottom: var(--sp-6);
+  right: var(--sp-7);
+  color: var(--color-text-on-dark-muted);
+}
+.cta-band-coord::before { background: var(--white); animation: coord-pulse 2.6s var(--ease-in-out) infinite; }
+@media (max-width: 639px) { .cta-band-coord { display: none; } }
+
+@keyframes coord-pulse {
+  0%, 100% { opacity: 0.45; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
 .cta-band-content {
   position: relative;
   z-index: 2;
@@ -819,7 +889,53 @@ p.lede { font-size: 1.15rem; line-height: var(--lh-snug); color: var(--color-tex
 .cta-band p { color: var(--color-text-on-dark-muted); margin-top: calc(-1 * var(--sp-3)); }
 .cta-band .btn { margin-top: var(--sp-2); }
 .cta-band .btn-outline { color: var(--white); }
-.cta-band .btn-outline:hover { background: var(--white); color: var(--slate); }
+.cta-band .btn-outline:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(20, 30, 40, 0.25);
+}
+.cta-band-btn svg { width: 15px; height: 15px; transition: transform var(--dur-base) var(--ease-out); }
+.cta-band-btn:hover svg { transform: translateX(4px); }
+
+/* ---- Shiny button — periodic gleam sweep --------------------------------
+   Adapted from a React/Framer Motion "ShinyButton" component into a plain
+   CSS @property-driven animation (no JS/React needed to drive --shine-x). */
+@property --shine-x {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 100%;
+}
+.btn-shiny { position: relative; }
+.btn-shiny-label {
+  display: inline-block;
+  -webkit-mask-image: linear-gradient(-75deg, #000 calc(var(--shine-x) + 20%), rgba(0, 0, 0, 0.35) calc(var(--shine-x) + 30%), #000 calc(var(--shine-x) + 100%));
+  mask-image: linear-gradient(-75deg, #000 calc(var(--shine-x) + 20%), rgba(0, 0, 0, 0.35) calc(var(--shine-x) + 30%), #000 calc(var(--shine-x) + 100%));
+  animation: btn-shine-sweep 3.6s ease-in-out infinite;
+}
+.btn-shiny::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(-75deg, transparent calc(var(--shine-x) + 15%), rgba(255, 255, 255, 0.5) calc(var(--shine-x) + 25%), transparent calc(var(--shine-x) + 35%));
+  mix-blend-mode: screen;
+  animation: btn-shine-sweep 3.6s ease-in-out infinite;
+}
+.btn-shiny:hover .btn-shiny-label,
+.btn-shiny:hover::after { animation-duration: 1.15s; }
+.btn-shiny:hover::after {
+  background: linear-gradient(-75deg, transparent calc(var(--shine-x) + 10%), rgba(255, 255, 255, 0.75) calc(var(--shine-x) + 22%), transparent calc(var(--shine-x) + 34%));
+}
+@keyframes btn-shine-sweep {
+  0% { --shine-x: 100%; }
+  40% { --shine-x: -100%; }
+  100% { --shine-x: -100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-shiny-label, .btn-shiny::after { animation: none; }
+}
 
 /* ==========================================================================
    Forms
@@ -1398,4 +1514,5 @@ p.lede { font-size: 1.15rem; line-height: var(--lh-snug); color: var(--color-tex
 @media (max-width: 900px) {
   .mega-footer-grid { grid-template-columns: 1fr; }
   .mega-footer-nav a { font-size: 1.3rem; }
+  .mega-footer-meta:first-of-type { margin-top: 0; }
 }

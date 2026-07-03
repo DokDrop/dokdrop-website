@@ -167,6 +167,22 @@
   }
 
   /* ---------------------------------------------------------------------
+     CTA band — cursor-tracked sheen
+  --------------------------------------------------------------------- */
+  var ctaBands = document.querySelectorAll('.cta-band');
+  if (ctaBands.length && !reduceMotion) {
+    ctaBands.forEach(function (band) {
+      band.addEventListener('pointermove', function (e) {
+        var rect = band.getBoundingClientRect();
+        var x = ((e.clientX - rect.left) / rect.width) * 100;
+        var y = ((e.clientY - rect.top) / rect.height) * 100;
+        band.style.setProperty('--spot-x', x + '%');
+        band.style.setProperty('--spot-y', y + '%');
+      });
+    });
+  }
+
+  /* ---------------------------------------------------------------------
      Concierge request form
   --------------------------------------------------------------------- */
   var requestForm = document.getElementById('request-form');
