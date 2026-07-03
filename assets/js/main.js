@@ -123,6 +123,22 @@
   }
 
   /* ---------------------------------------------------------------------
+     Wave text — replay the per-letter bounce on hover
+     (it already plays once on load via CSS; this just restarts it)
+  --------------------------------------------------------------------- */
+  var waveText = document.querySelector('.wave-text');
+  if (waveText && !reduceMotion) {
+    var waveSpans = waveText.querySelectorAll('span');
+    waveText.addEventListener('mouseenter', function () {
+      waveSpans.forEach(function (span) {
+        span.style.animation = 'none';
+        void span.offsetWidth;
+        span.style.animation = '';
+      });
+    });
+  }
+
+  /* ---------------------------------------------------------------------
      Animated stat counters
   --------------------------------------------------------------------- */
   var stats = document.querySelectorAll('[data-count-to]');
