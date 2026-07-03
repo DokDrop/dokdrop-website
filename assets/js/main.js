@@ -26,26 +26,39 @@
   }
 
   /* ---------------------------------------------------------------------
-     Mobile nav toggle
+     Tubelight navbar — sliding glow/pill indicator
   --------------------------------------------------------------------- */
-  var toggle = document.querySelector('.nav-toggle');
-  var navLinks = document.querySelector('.nav-links');
-  if (toggle && navLinks) {
-    toggle.addEventListener('click', function () {
-      var isOpen = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!isOpen));
-      navLinks.classList.toggle('is-open', !isOpen);
-      document.body.classList.toggle('menu-open', !isOpen);
-      document.body.style.overflow = !isOpen ? 'hidden' : '';
+  var tubelightNav = document.querySelector('.tubelight-nav-inner');
+  if (tubelightNav) {
+    var indicator = tubelightNav.querySelector('.tubelight-indicator');
+    var items = Array.prototype.slice.call(tubelightNav.querySelectorAll('.tubelight-item'));
+    var activeItem = tubelightNav.querySelector('.tubelight-item[aria-current="page"]');
+
+    var moveIndicatorTo = function (el) {
+      if (!indicator || !el) return;
+      indicator.style.left = el.offsetLeft + 'px';
+      indicator.style.width = el.offsetWidth + 'px';
+      indicator.classList.add('is-active');
+    };
+
+    if (activeItem) {
+      moveIndicatorTo(activeItem);
+    }
+
+    items.forEach(function (item) {
+      item.addEventListener('mouseenter', function () { moveIndicatorTo(item); });
     });
-    navLinks.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        toggle.setAttribute('aria-expanded', 'false');
-        navLinks.classList.remove('is-open');
-        document.body.classList.remove('menu-open');
-        document.body.style.overflow = '';
-      });
+    tubelightNav.addEventListener('mouseleave', function () {
+      if (activeItem) {
+        moveIndicatorTo(activeItem);
+      } else if (indicator) {
+        indicator.classList.remove('is-active');
+      }
     });
+
+    if (activeItem) {
+      window.addEventListener('resize', function () { moveIndicatorTo(activeItem); });
+    }
   }
 
   /* ---------------------------------------------------------------------
