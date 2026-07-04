@@ -337,6 +337,7 @@ p.lede { font-size: 1.15rem; line-height: var(--lh-snug); color: var(--color-tex
   gap: var(--sp-3);
   color: var(--color-ink);
 }
+.brand-mark { width: 30px; height: 30px; flex-shrink: 0; }
 .brand-word {
   font-family: var(--font-display);
   font-size: 1.05rem;
