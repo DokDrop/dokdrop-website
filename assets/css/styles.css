@@ -1027,6 +1027,7 @@ p.lede { font-size: 1.15rem; line-height: var(--lh-snug); color: var(--color-tex
 }
 .form-status.is-visible { display: flex; }
 .form-status svg { width: 22px; height: 22px; flex-shrink: 0; }
+.form-status.is-error { background: #A83232; }
 
 /* ==========================================================================
    FAQ accordion

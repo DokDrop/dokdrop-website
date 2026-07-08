@@ -49,12 +49,12 @@ Everything below is realistic placeholder copy, not real business data:
   there's nothing to license — but you may want real vessel/marina
   photography in the `illustration-panel` slots on `services.html` and
   `about.html` for a more grounded feel.
-- **Request/contact forms**: currently simulate a submission client-side
-  (see `main.js`) and show a success state, but do not send data anywhere.
-  Wire `#request-form` and `#contact-form` up to your backend, form service
-  (e.g. Formspree, Netlify Forms), or email endpoint before launch. The
-  request form now also has an optional "pick up from" supplier field —
-  make sure your backend/notification flow captures it.
+- **Request/contact forms**: wired to submit via `fetch` to Formspree (see
+  `main.js`), which emails you the structured submission — no backend
+  needed. Both `#request-form` (`request.html`) and `#contact-form`
+  (`contact.html`) POST to `https://formspree.io/f/mojooqrl`. The request
+  form also has an optional "pick up from" supplier field — make sure it's
+  visible in the emails Formspree sends you.
 
 ## Local preview
 
