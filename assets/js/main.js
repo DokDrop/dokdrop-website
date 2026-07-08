@@ -204,6 +204,10 @@
   var requestForm = document.getElementById('request-form');
   if (requestForm) {
     var requiredFields = requestForm.querySelectorAll('[required]');
+    var requestSubmitBtn = requestForm.querySelector('button[type="submit"]');
+    var requestSubmitLabel = requestSubmitBtn ? requestSubmitBtn.textContent : '';
+    var requestStatus = document.getElementById('form-status');
+    var requestStatusDefaultHTML = requestStatus ? requestStatus.innerHTML : '';
 
     var validateField = function (field) {
       var wrapper = field.closest('.field');
@@ -231,24 +235,38 @@
         return;
       }
 
-      var submitBtn = requestForm.querySelector('button[type="submit"]');
-      var status = document.getElementById('form-status');
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending request…';
+      if (requestSubmitBtn) {
+        requestSubmitBtn.disabled = true;
+        requestSubmitBtn.textContent = 'Sending request…';
       }
+      if (requestStatus) requestStatus.classList.remove('is-visible', 'is-error');
 
-      window.setTimeout(function () {
-        if (submitBtn) {
-          submitBtn.textContent = 'Request sent';
-        }
-        if (status) {
-          status.classList.add('is-visible');
-          status.setAttribute('role', 'status');
-          status.focus();
+      fetch(requestForm.action, {
+        method: 'POST',
+        body: new FormData(requestForm),
+        headers: { 'Accept': 'application/json' }
+      }).then(function (response) {
+        if (!response.ok) throw new Error('Form submission failed');
+        if (requestSubmitBtn) requestSubmitBtn.textContent = 'Request sent';
+        if (requestStatus) {
+          requestStatus.innerHTML = requestStatusDefaultHTML;
+          requestStatus.classList.add('is-visible');
+          requestStatus.setAttribute('role', 'status');
+          requestStatus.focus();
         }
         requestForm.reset();
-      }, 900);
+      }).catch(function () {
+        if (requestSubmitBtn) {
+          requestSubmitBtn.disabled = false;
+          requestSubmitBtn.textContent = requestSubmitLabel;
+        }
+        if (requestStatus) {
+          requestStatus.innerHTML = '<span>Something went wrong — please call or email us directly.</span>';
+          requestStatus.classList.add('is-visible', 'is-error');
+          requestStatus.setAttribute('role', 'alert');
+          requestStatus.focus();
+        }
+      });
     });
   }
 
@@ -257,19 +275,43 @@
   --------------------------------------------------------------------- */
   var contactForm = document.getElementById('contact-form');
   if (contactForm) {
+    var contactSubmitBtn = contactForm.querySelector('button[type="submit"]');
+    var contactSubmitLabel = contactSubmitBtn ? contactSubmitBtn.textContent : '';
+    var contactStatus = document.getElementById('contact-status');
+    var contactStatusDefaultHTML = contactStatus ? contactStatus.innerHTML : '';
+
     contactForm.addEventListener('submit', function (e) {
       e.preventDefault();
-      var submitBtn = contactForm.querySelector('button[type="submit"]');
-      var status = document.getElementById('contact-status');
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending…';
+      if (contactSubmitBtn) {
+        contactSubmitBtn.disabled = true;
+        contactSubmitBtn.textContent = 'Sending…';
       }
-      window.setTimeout(function () {
-        if (submitBtn) submitBtn.textContent = 'Message sent';
-        if (status) status.classList.add('is-visible');
+      if (contactStatus) contactStatus.classList.remove('is-visible', 'is-error');
+
+      fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { 'Accept': 'application/json' }
+      }).then(function (response) {
+        if (!response.ok) throw new Error('Form submission failed');
+        if (contactSubmitBtn) contactSubmitBtn.textContent = 'Message sent';
+        if (contactStatus) {
+          contactStatus.innerHTML = contactStatusDefaultHTML;
+          contactStatus.classList.add('is-visible');
+          contactStatus.setAttribute('role', 'status');
+        }
         contactForm.reset();
-      }, 800);
+      }).catch(function () {
+        if (contactSubmitBtn) {
+          contactSubmitBtn.disabled = false;
+          contactSubmitBtn.textContent = contactSubmitLabel;
+        }
+        if (contactStatus) {
+          contactStatus.innerHTML = '<span>Something went wrong — please call or email us directly.</span>';
+          contactStatus.classList.add('is-visible', 'is-error');
+          contactStatus.setAttribute('role', 'alert');
+        }
+      });
     });
   }
 })();

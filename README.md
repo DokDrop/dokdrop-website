@@ -1,11 +1,22 @@
 # DokDrop — Marketing Site
 
-Static site (no build step) for DokDrop, a concierge provisioning and delivery
-service for charter yachts in Miami. Six pages: `index.html`,
+Static site (no build step) for DokDrop, an on-demand delivery marketplace
+connecting yacht crews in Miami to local suppliers — DokDrop never owns or
+sells the goods; it handles pickup and last-mile delivery only, plus an
+optional monthly membership. Six pages: `index.html`,
 `how-it-works.html`, `services.html`, `about.html`, `request.html`,
 `contact.html`. Shared design system lives in `assets/css/styles.css`;
 shared behavior (nav, scroll reveal, hero chart animation, counters, form
 handling, scroll-progress compass) lives in `assets/js/main.js`.
+
+**Model note (updated):** copy across all six pages was revised from an
+earlier "concierge provisioning" framing (DokDrop sources, quality-checks,
+and marks up goods) to a marketplace framing (DokDrop connects crew to
+suppliers and delivers; crew pays the supplier directly; DokDrop charges a
+delivery fee or membership only). If you add new copy, keep language aligned
+with that: avoid "we source," "purveyor," "vetted," or "concierge" in ways
+that imply DokDrop selects/owns/marks up inventory — prefer "supplier,"
+"pickup," "runner," and "dispatch."
 
 **Navigation pattern**: the header shows only the logo and a circular menu
 toggle at every screen size — clicking it opens a full-screen dark overlay
@@ -20,7 +31,7 @@ scratch, and add the new link to *both* `.nav-links-inner` and
 
 Everything below is realistic placeholder copy, not real business data:
 
-- **Phone / email**: `(305) 555-0123` and `concierge@dokdrop.com` appear in
+- **Phone / email**: `(305) 555-0123` and `dispatch@dokdrop.com` appear in
   every page's nav, footer, and contact/request pages — find-and-replace
   across all six `.html` files.
 - **Marina & anchorage names**: the trust marquee (`index.html`) and service
@@ -29,16 +40,21 @@ Everything below is realistic placeholder copy, not real business data:
 - **Testimonial** (`index.html`): fictional captain quote — swap for a real
   one once you have it, or remove the section.
 - **Pricing / SLA claims**: "90 min average turnaround," "40+ marinas," "300+
-  purveyors," "2–4 hr standard" etc. are illustrative — replace with real
-  numbers before publishing.
+  connected suppliers," etc. are illustrative — replace with real numbers
+  before publishing. Actual pricing tiers (delivery fee by urgency,
+  membership price/inclusions) still need to be added to the site — they
+  exist in the unit economics model but aren't yet reflected as real numbers
+  in the copy.
 - **Illustrations**: all graphics are custom inline SVG (no photography), so
   there's nothing to license — but you may want real vessel/marina
   photography in the `illustration-panel` slots on `services.html` and
   `about.html` for a more grounded feel.
-- **Request/contact forms**: currently simulate a submission client-side
-  (see `main.js`) and show a success state, but do not send data anywhere.
-  Wire `#request-form` and `#contact-form` up to your backend, form service
-  (e.g. Formspree, Netlify Forms), or email endpoint before launch.
+- **Request/contact forms**: wired to submit via `fetch` to Formspree (see
+  `main.js`), which emails you the structured submission — no backend
+  needed. Both `#request-form` (`request.html`) and `#contact-form`
+  (`contact.html`) POST to `https://formspree.io/f/mojooqrl`. The request
+  form also has an optional "pick up from" supplier field — make sure it's
+  visible in the emails Formspree sends you.
 
 ## Local preview
 

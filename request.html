@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Request a Delivery — DokDrop</title>
-<meta name="description" content="Submit a concierge provisioning request to DokDrop: vessel details, delivery window, and what you need — sourced and delivered dockside or to anchor.">
+<meta name="description" content="Submit a delivery request to DokDrop: vessel details, delivery window, and which supplier to pick up from — a runner brings it dockside or to anchor.">
 <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,9 +41,9 @@
 
   <section class="page-header overlap-header">
     <div class="container">
-      <p class="coord" style="margin-bottom:var(--sp-6);">CONCIERGE REQUEST</p>
+      <p class="coord" style="margin-bottom:var(--sp-6);">DELIVERY REQUEST</p>
       <h1 class="reveal-cinematic" style="max-width:15ch;">Tell us what's aboard — and what isn't.</h1>
-      <p class="lede reveal-cinematic" style="max-width:56ch; margin-top:var(--sp-6);">Fill in the vessel, the window, and what you need. A concierge confirms pricing and availability within 15 minutes during desk hours.</p>
+      <p class="lede reveal-cinematic" style="max-width:56ch; margin-top:var(--sp-6);">Fill in the vessel, the window, and where to pick up from. We confirm your delivery fee and dispatch a runner within 15 minutes during desk hours.</p>
     </div>
   </section>
 
@@ -51,7 +51,7 @@
     <div class="container">
       <div class="two-col two-col-form">
 
-        <form id="request-form" novalidate>
+        <form id="request-form" novalidate action="https://formspree.io/f/mojooqrl" method="POST">
           <div class="form-grid">
 
             <div class="field full">
@@ -91,6 +91,12 @@
               <span class="error-msg">Please share your marina/slip or anchor location.</span>
             </div>
 
+            <div class="field full">
+              <label for="supplier">Pick up from<span class="hint">(optional)</span></label>
+              <input type="text" id="supplier" name="supplier" placeholder="e.g. Publix on Alton Rd, or your usual chandlery — leave blank and we'll suggest one">
+              <span class="hint">DokDrop doesn't sell goods — you pay the supplier directly. We just handle the run.</span>
+            </div>
+
             <div class="field">
               <label for="delivery-date">Delivery date<span aria-hidden="true"> *</span></label>
               <input type="date" id="delivery-date" name="delivery-date" required>
@@ -106,12 +112,16 @@
               <label>Urgency<span aria-hidden="true"> *</span></label>
               <div class="pill-group" role="radiogroup" aria-required="true">
                 <span class="pill-choice">
-                  <input type="radio" id="urgency-standard" name="urgency" value="Standard (2-4 hr)" required checked>
-                  <label for="urgency-standard">Standard (2–4 hr)</label>
+                  <input type="radio" id="urgency-standard" name="urgency" value="Standard (24+ hr)" required checked>
+                  <label for="urgency-standard">Standard (24+ hr)</label>
                 </span>
                 <span class="pill-choice">
-                  <input type="radio" id="urgency-rush" name="urgency" value="Rush (under 90 min)" required>
-                  <label for="urgency-rush">Rush (under 90 min)</label>
+                  <input type="radio" id="urgency-ondemand" name="urgency" value="On-Demand (2-4 hr)" required>
+                  <label for="urgency-ondemand">On-Demand (2–4 hr)</label>
+                </span>
+                <span class="pill-choice">
+                  <input type="radio" id="urgency-rush" name="urgency" value="Rush (under 2 hr)" required>
+                  <label for="urgency-rush">Rush (under 2 hr)</label>
                 </span>
               </div>
             </div>
@@ -148,8 +158,8 @@
 
             <div class="field full">
               <label for="order-details">What do you need?<span aria-hidden="true"> *</span></label>
-              <textarea id="order-details" name="order-details" required placeholder="List items, quantities, brands or substitutions — or paste your order as-is."></textarea>
-              <span class="error-msg">Let us know what to source.</span>
+              <textarea id="order-details" name="order-details" required placeholder="List items and quantities — or paste your order as-is. We'll pass it straight to the runner."></textarea>
+              <span class="error-msg">Let us know what you need.</span>
             </div>
 
             <div class="field">
@@ -192,7 +202,7 @@
 
           <div class="form-status" id="form-status" tabindex="-1">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Request received. Your concierge will confirm pricing and timing shortly — by phone or email.</span>
+            <span>Request received. We'll confirm your delivery fee and dispatch a runner shortly — by phone or email.</span>
           </div>
         </form>
 
@@ -200,18 +210,18 @@
           <div class="card" style="background:var(--slate); color:var(--white); border:none;">
             <h4 style="color:var(--white);">What happens next</h4>
             <ul class="list-check" style="margin-top:var(--sp-5);">
-              <li><svg viewBox="0 0 24 24" fill="none" style="color:var(--white);"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="color:rgba(255,255,255,0.78);">Concierge confirms pricing &amp; availability, usually within 15 minutes.</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" style="color:var(--white);"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="color:rgba(255,255,255,0.78);">We source from vetted purveyors and stage everything at the supply dock.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" style="color:var(--white);"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="color:rgba(255,255,255,0.78);">We confirm your delivery fee and lock a pickup window, usually within 15 minutes.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" style="color:var(--white);"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="color:rgba(255,255,255,0.78);">A runner heads to your named supplier and picks up the order.</span></li>
               <li><svg viewBox="0 0 24 24" fill="none" style="color:var(--white);"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="color:rgba(255,255,255,0.78);">Delivered dockside or to anchor within your confirmed window.</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" style="color:var(--white);"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="color:rgba(255,255,255,0.78);">Photo confirmation and itemized receipt sent once aboard.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" style="color:var(--white);"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="color:rgba(255,255,255,0.78);">Photo confirmation and your delivery receipt sent once aboard.</span></li>
             </ul>
           </div>
 
           <div class="card" style="margin-top:var(--sp-5);">
             <h4>Prefer to call it in?</h4>
-            <p style="margin-top:var(--sp-3);">Our concierge desk is staffed daily, 7am–11pm.</p>
+            <p style="margin-top:var(--sp-3);">Our dispatch desk is staffed daily, 7am–11pm.</p>
             <a href="tel:+13055550123" class="btn btn-outline btn-block" style="margin-top:var(--sp-5);">(305) 555-0123</a>
-            <a href="mailto:concierge@dokdrop.com" class="btn btn-ghost btn-block" style="margin-top:var(--sp-2);">concierge@dokdrop.com</a>
+            <a href="mailto:dispatch@dokdrop.com" class="btn btn-ghost btn-block" style="margin-top:var(--sp-2);">dispatch@dokdrop.com</a>
           </div>
         </aside>
 
@@ -235,8 +245,8 @@
       <div class="mega-footer-meta">
         <span class="coord">25°46'N 80°08'W</span>
         <a href="tel:+13055550123">(305) 555-0123</a>
-        <a href="mailto:concierge@dokdrop.com">concierge@dokdrop.com</a>
-        <span>Dockside desk, 7am – 11pm daily</span>
+        <a href="mailto:dispatch@dokdrop.com">dispatch@dokdrop.com</a>
+        <span>Runner network live, 7am – 11pm daily</span>
       </div>
       <div class="mega-footer-meta">
         <span style="color:var(--color-ink); font-weight:600;">Service Area</span>
