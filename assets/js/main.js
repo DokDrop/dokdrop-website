@@ -203,6 +203,56 @@
   --------------------------------------------------------------------- */
   var requestForm = document.getElementById('request-form');
   if (requestForm) {
+    // Delivery date defaults to today (no-JS fallback: field is simply empty)
+    var deliveryDate = document.getElementById('delivery-date');
+    if (deliveryDate && !deliveryDate.value) {
+      var today = new Date();
+      deliveryDate.value = today.getFullYear() + '-' +
+        ('0' + (today.getMonth() + 1)).slice(-2) + '-' +
+        ('0' + today.getDate()).slice(-2);
+    }
+
+    // Deep links: ?urgency=rush|ondemand, ?marina=<slug>, ?service=receiving
+    var params = new URLSearchParams(window.location.search);
+    var urgencyParam = params.get('urgency');
+    if (urgencyParam) {
+      var urgencyRadio = document.getElementById(
+        urgencyParam === 'rush' ? 'urgency-rush' :
+        urgencyParam === 'ondemand' ? 'urgency-ondemand' : ''
+      );
+      if (urgencyRadio) {
+        urgencyRadio.checked = true;
+        var firstField = document.getElementById('order-details');
+        if (firstField) firstField.focus();
+      }
+    }
+    var marinaParam = params.get('marina');
+    if (marinaParam) {
+      var marinaNames = {
+        'miami-beach-marina': 'Miami Beach Marina',
+        'sunset-harbour': 'Sunset Harbour Yacht Club',
+        'island-gardens': 'Island Gardens Deep Harbour',
+        'montys-marina': "Monty's Marina, Coconut Grove",
+        'key-biscayne-anchorage': 'Key Biscayne / Biscayne Bay anchorage',
+        'fisher-island': 'Fisher Island Marina',
+        'grove-harbour': 'Grove Harbour Marina'
+      };
+      var locationInput = document.getElementById('location');
+      if (locationInput && !locationInput.value && marinaNames[marinaParam]) {
+        locationInput.value = marinaNames[marinaParam];
+      }
+      if (marinaParam === 'key-biscayne-anchorage') {
+        var anchorRadio = document.getElementById('type-anchor');
+        if (anchorRadio) anchorRadio.checked = true;
+      }
+    }
+    if (params.get('service') === 'receiving') {
+      var orderDetails = document.getElementById('order-details');
+      if (orderDetails && !orderDetails.value) {
+        orderDetails.value = 'Package receiving setup for our vessel';
+      }
+    }
+
     var requiredFields = requestForm.querySelectorAll('[required]');
     var requestSubmitBtn = requestForm.querySelector('button[type="submit"]');
     var requestSubmitLabel = requestSubmitBtn ? requestSubmitBtn.textContent : '';

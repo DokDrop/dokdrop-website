@@ -43,7 +43,7 @@
     <div class="container">
       <p class="coord" style="margin-bottom:var(--sp-6);">DELIVERY REQUEST</p>
       <h1 class="reveal-cinematic" style="max-width:15ch;">Tell us what's aboard — and what isn't.</h1>
-      <p class="lede reveal-cinematic" style="max-width:56ch; margin-top:var(--sp-6);">Fill in the vessel, the window, and where to pick up from. We confirm your delivery fee and dispatch a runner within 15 minutes during desk hours.</p>
+      <p class="lede reveal-cinematic" style="max-width:56ch; margin-top:var(--sp-6);">Tell us what you need, where the boat is, and when — that's enough to dispatch. We confirm your delivery fee and a runner within 15 minutes during desk hours.</p>
     </div>
   </section>
 
@@ -55,22 +55,19 @@
           <div class="form-grid">
 
             <div class="field full">
-              <label for="vessel-name">Vessel name<span aria-hidden="true"> *</span></label>
-              <input type="text" id="vessel-name" name="vessel-name" required placeholder="e.g. Sea Fable">
-              <span class="error-msg">Please enter the vessel name.</span>
+              <label for="order-details">What do you need?<span aria-hidden="true"> *</span></label>
+              <textarea id="order-details" name="order-details" required placeholder="e.g. 6 bags of ice, 2 cases of Fiji, fresh basil + mint — or paste your whole list"></textarea>
+              <span class="error-msg">Let us know what you need.</span>
             </div>
 
             <div class="field">
-              <label for="vessel-loa">Length overall (LOA)</label>
-              <input type="text" id="vessel-loa" name="vessel-loa" placeholder="e.g. 124 ft">
+              <label for="location">Where's the boat?<span aria-hidden="true"> *</span></label>
+              <input type="text" id="location" name="location" required placeholder="Marina &amp; slip, or anchorage / approx. position">
+              <span class="hint">If at anchor, share approximate coordinates or a description of your position.</span>
+              <span class="error-msg">Please share your marina/slip or anchor location.</span>
             </div>
 
             <div class="field">
-              <label for="guest-count">Guests aboard</label>
-              <input type="text" id="guest-count" name="guest-count" placeholder="e.g. 8 guests, 6 crew">
-            </div>
-
-            <div class="field full">
               <label>Delivery type<span aria-hidden="true"> *</span></label>
               <div class="pill-group" role="radiogroup" aria-required="true">
                 <span class="pill-choice">
@@ -85,31 +82,7 @@
             </div>
 
             <div class="field full">
-              <label for="location">Marina &amp; slip, or anchor coordinates<span aria-hidden="true"> *</span></label>
-              <input type="text" id="location" name="location" required placeholder="e.g. Miami Beach Marina, Slip 14 — or 25.7617° N, 80.1918° W">
-              <span class="hint">If at anchor, share approximate coordinates or a description of your position.</span>
-              <span class="error-msg">Please share your marina/slip or anchor location.</span>
-            </div>
-
-            <div class="field full">
-              <label for="supplier">Pick up from<span class="hint">(optional)</span></label>
-              <input type="text" id="supplier" name="supplier" placeholder="e.g. Publix on Alton Rd, or your usual chandlery — leave blank and we'll suggest one">
-              <span class="hint">DokDrop doesn't sell goods — you pay the supplier directly. We just handle the run.</span>
-            </div>
-
-            <div class="field">
-              <label for="delivery-date">Delivery date<span aria-hidden="true"> *</span></label>
-              <input type="date" id="delivery-date" name="delivery-date" required>
-              <span class="error-msg">Please choose a delivery date.</span>
-            </div>
-
-            <div class="field">
-              <label for="delivery-time">Preferred time</label>
-              <input type="time" id="delivery-time" name="delivery-time">
-            </div>
-
-            <div class="field full">
-              <label>Urgency<span aria-hidden="true"> *</span></label>
+              <label>When?<span aria-hidden="true"> *</span></label>
               <div class="pill-group" role="radiogroup" aria-required="true">
                 <span class="pill-choice">
                   <input type="radio" id="urgency-standard" name="urgency" value="Standard (24+ hr)" required checked>
@@ -126,79 +99,110 @@
               </div>
             </div>
 
-            <div class="field full">
-              <label>Categories needed</label>
-              <div class="pill-group">
-                <span class="pill-choice">
-                  <input type="checkbox" id="cat-galley" name="categories" value="Galley Provisioning">
-                  <label for="cat-galley">Galley Provisioning</label>
-                </span>
-                <span class="pill-choice">
-                  <input type="checkbox" id="cat-deck" name="categories" value="Deck & Maintenance">
-                  <label for="cat-deck">Deck &amp; Maintenance</label>
-                </span>
-                <span class="pill-choice">
-                  <input type="checkbox" id="cat-technical" name="categories" value="Technical & Parts">
-                  <label for="cat-technical">Technical &amp; Parts</label>
-                </span>
-                <span class="pill-choice">
-                  <input type="checkbox" id="cat-guest" name="categories" value="Guest & Owner Amenities">
-                  <label for="cat-guest">Guest Amenities</label>
-                </span>
-                <span class="pill-choice">
-                  <input type="checkbox" id="cat-fuel" name="categories" value="Fuel, Water & Ice">
-                  <label for="cat-fuel">Fuel, Water &amp; Ice</label>
-                </span>
-                <span class="pill-choice">
-                  <input type="checkbox" id="cat-other" name="categories" value="Other">
-                  <label for="cat-other">Other</label>
-                </span>
-              </div>
-            </div>
-
-            <div class="field full">
-              <label for="order-details">What do you need?<span aria-hidden="true"> *</span></label>
-              <textarea id="order-details" name="order-details" required placeholder="List items and quantities — or paste your order as-is. We'll pass it straight to the runner."></textarea>
-              <span class="error-msg">Let us know what you need.</span>
+            <div class="field">
+              <label for="delivery-date">Delivery date<span aria-hidden="true"> *</span></label>
+              <input type="date" id="delivery-date" name="delivery-date" required>
+              <span class="error-msg">Please choose a delivery date.</span>
             </div>
 
             <div class="field">
-              <label for="contact-name">Your name<span aria-hidden="true"> *</span></label>
-              <input type="text" id="contact-name" name="contact-name" required placeholder="Full name">
-              <span class="error-msg">Please enter your name.</span>
-            </div>
-
-            <div class="field">
-              <label for="contact-role">Role</label>
-              <select id="contact-role" name="contact-role">
-                <option value="Captain">Captain</option>
-                <option value="Crew">Crew</option>
-                <option value="Purser/Stew">Purser / Chief Stew</option>
-                <option value="Owner">Owner</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label for="contact-phone">Phone<span aria-hidden="true"> *</span></label>
+              <label for="contact-phone">Phone (WhatsApp preferred)<span aria-hidden="true"> *</span></label>
               <input type="tel" id="contact-phone" name="contact-phone" required placeholder="(305) 555-0100">
               <span class="error-msg">Please enter a phone number.</span>
             </div>
 
-            <div class="field">
-              <label for="contact-email">Email<span aria-hidden="true"> *</span></label>
-              <input type="email" id="contact-email" name="contact-email" required placeholder="you@vessel.com">
-              <span class="error-msg">Please enter a valid email.</span>
-            </div>
+            <details class="faq-item form-more" id="form-more">
+              <summary>Add vessel details — optional, speeds up dispatch<span class="faq-icon" aria-hidden="true"></span></summary>
+              <div class="form-grid form-more-grid">
 
-            <div class="field full">
-              <label for="access-notes">Access notes <span class="hint">(optional)</span></label>
-              <textarea id="access-notes" name="access-notes" placeholder="Gate codes, dock contact, tender pickup point, or anything the delivery crew should know."></textarea>
-            </div>
+                <div class="field">
+                  <label for="vessel-name">Vessel name</label>
+                  <input type="text" id="vessel-name" name="vessel-name" placeholder="e.g. Sea Fable">
+                </div>
+
+                <div class="field">
+                  <label for="vessel-loa">Length overall (LOA)</label>
+                  <input type="text" id="vessel-loa" name="vessel-loa" placeholder="e.g. 124 ft">
+                </div>
+
+                <div class="field">
+                  <label for="guest-count">Guests aboard</label>
+                  <input type="text" id="guest-count" name="guest-count" placeholder="e.g. 8 guests, 6 crew">
+                </div>
+
+                <div class="field">
+                  <label for="supplier">Pick up from</label>
+                  <input type="text" id="supplier" name="supplier" placeholder="e.g. Publix on Alton Rd, or your usual chandlery">
+                  <span class="hint">DokDrop doesn't sell goods — you pay the supplier directly. We just handle the run.</span>
+                </div>
+
+                <div class="field">
+                  <label for="contact-name">Your name</label>
+                  <input type="text" id="contact-name" name="contact-name" placeholder="Full name">
+                </div>
+
+                <div class="field">
+                  <label for="contact-role">Role</label>
+                  <select id="contact-role" name="contact-role">
+                    <option value="Captain">Captain</option>
+                    <option value="Crew">Crew</option>
+                    <option value="Purser/Stew">Purser / Chief Stew</option>
+                    <option value="Owner">Owner</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="contact-email">Email</label>
+                  <input type="email" id="contact-email" name="contact-email" placeholder="you@vessel.com">
+                </div>
+
+                <div class="field">
+                  <label for="delivery-time">Preferred time</label>
+                  <input type="time" id="delivery-time" name="delivery-time">
+                </div>
+
+                <div class="field full">
+                  <label>Categories needed</label>
+                  <div class="pill-group">
+                    <span class="pill-choice">
+                      <input type="checkbox" id="cat-galley" name="categories" value="Galley Provisioning">
+                      <label for="cat-galley">Galley Provisioning</label>
+                    </span>
+                    <span class="pill-choice">
+                      <input type="checkbox" id="cat-deck" name="categories" value="Deck & Maintenance">
+                      <label for="cat-deck">Deck &amp; Maintenance</label>
+                    </span>
+                    <span class="pill-choice">
+                      <input type="checkbox" id="cat-technical" name="categories" value="Technical & Parts">
+                      <label for="cat-technical">Technical &amp; Parts</label>
+                    </span>
+                    <span class="pill-choice">
+                      <input type="checkbox" id="cat-guest" name="categories" value="Guest & Owner Amenities">
+                      <label for="cat-guest">Guest Amenities</label>
+                    </span>
+                    <span class="pill-choice">
+                      <input type="checkbox" id="cat-fuel" name="categories" value="Fuel, Water & Ice">
+                      <label for="cat-fuel">Fuel, Water &amp; Ice</label>
+                    </span>
+                    <span class="pill-choice">
+                      <input type="checkbox" id="cat-other" name="categories" value="Other">
+                      <label for="cat-other">Other</label>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="field full">
+                  <label for="access-notes">Access notes <span class="hint">(optional)</span></label>
+                  <textarea id="access-notes" name="access-notes" placeholder="Gate codes, dock contact, tender pickup point, or anything the delivery crew should know."></textarea>
+                </div>
+
+              </div>
+            </details>
 
           </div>
 
-          <button type="submit" class="btn btn-primary btn-block" style="margin-top:var(--sp-6);">Send Request</button>
+          <button type="submit" class="btn btn-primary btn-block" style="margin-top:var(--sp-6);">Send request — we confirm in 15 min</button>
 
           <div class="form-status" id="form-status" tabindex="-1">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
