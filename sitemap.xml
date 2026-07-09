@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TODO: confirm production domain before launch; URLs below assume https://dokdrop.com -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://dokdrop.com/index.html</loc></url>
+  <url><loc>https://dokdrop.com/how-it-works.html</loc></url>
+  <url><loc>https://dokdrop.com/services.html</loc></url>
+  <url><loc>https://dokdrop.com/about.html</loc></url>
+  <url><loc>https://dokdrop.com/request.html</loc></url>
+  <url><loc>https://dokdrop.com/contact.html</loc></url>
+  <url><loc>https://dokdrop.com/package-receiving.html</loc></url>
+  <url><loc>https://dokdrop.com/delivery-miami-beach-marina.html</loc></url>
+  <url><loc>https://dokdrop.com/delivery-sunset-harbour.html</loc></url>
+  <url><loc>https://dokdrop.com/delivery-island-gardens.html</loc></url>
+  <url><loc>https://dokdrop.com/delivery-montys-marina.html</loc></url>
+  <url><loc>https://dokdrop.com/delivery-key-biscayne-anchorage.html</loc></url>
+  <url><loc>https://dokdrop.com/delivery-fisher-island.html</loc></url>
+  <url><loc>https://dokdrop.com/delivery-grove-harbour.html</loc></url>
+</urlset>

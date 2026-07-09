@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO: confirm production domain before launch
+Sitemap: https://dokdrop.com/sitemap.xml
