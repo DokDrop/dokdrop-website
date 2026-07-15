@@ -311,7 +311,7 @@
           requestSubmitBtn.textContent = requestSubmitLabel;
         }
         if (requestStatus) {
-          requestStatus.innerHTML = '<span>Something went wrong — please call or email us directly.</span>';
+          requestStatus.innerHTML = '<span>Something went wrong. Please call or email us directly.</span>';
           requestStatus.classList.add('is-visible', 'is-error');
           requestStatus.setAttribute('role', 'alert');
           requestStatus.focus();
@@ -357,7 +357,7 @@
           contactSubmitBtn.textContent = contactSubmitLabel;
         }
         if (contactStatus) {
-          contactStatus.innerHTML = '<span>Something went wrong — please call or email us directly.</span>';
+          contactStatus.innerHTML = '<span>Something went wrong. Please call or email us directly.</span>';
           contactStatus.classList.add('is-visible', 'is-error');
           contactStatus.setAttribute('role', 'alert');
         }

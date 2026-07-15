@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Request a Delivery — DokDrop</title>
-<meta name="description" content="Submit a delivery request to DokDrop: vessel details, delivery window, and which supplier to pick up from — a runner brings it dockside or to anchor.">
+<meta name="description" content="Submit a delivery request to DokDrop: vessel details, delivery window, and which supplier to pick up from. A runner brings it dockside or to anchor.">
 <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,8 +42,8 @@
   <section class="page-header overlap-header">
     <div class="container">
       <p class="coord" style="margin-bottom:var(--sp-6);">DELIVERY REQUEST</p>
-      <h1 class="reveal-cinematic" style="max-width:15ch;">Tell us what's aboard — and what isn't.</h1>
-      <p class="lede reveal-cinematic" style="max-width:56ch; margin-top:var(--sp-6);">Tell us what you need, where the boat is, and when — that's enough to dispatch. We confirm your delivery fee and a runner within 15 minutes during desk hours.</p>
+      <h1 class="reveal-cinematic" style="max-width:15ch;">Tell us what's aboard, and what isn't.</h1>
+      <p class="lede reveal-cinematic" style="max-width:56ch; margin-top:var(--sp-6);">Tell us what you need, where the boat is, and when. That's enough to dispatch. We confirm your delivery fee and a runner within 15 minutes during desk hours.</p>
     </div>
   </section>
 
@@ -56,7 +56,7 @@
 
             <div class="field full">
               <label for="order-details">What do you need?<span aria-hidden="true"> *</span></label>
-              <textarea id="order-details" name="order-details" required placeholder="e.g. 6 bags of ice, 2 cases of Fiji, fresh basil + mint — or paste your whole list"></textarea>
+              <textarea id="order-details" name="order-details" required placeholder="e.g. 6 bags of ice, 2 cases of Fiji, fresh basil + mint, or paste your whole list"></textarea>
               <span class="error-msg">Let us know what you need.</span>
             </div>
 
@@ -112,7 +112,7 @@
             </div>
 
             <details class="faq-item form-more" id="form-more">
-              <summary>Add vessel details — optional, speeds up dispatch<span class="faq-icon" aria-hidden="true"></span></summary>
+              <summary>Add vessel details (optional, speeds up dispatch)<span class="faq-icon" aria-hidden="true"></span></summary>
               <div class="form-grid form-more-grid">
 
                 <div class="field">
@@ -133,7 +133,7 @@
                 <div class="field">
                   <label for="supplier">Pick up from</label>
                   <input type="text" id="supplier" name="supplier" placeholder="e.g. Publix on Alton Rd, or your usual chandlery">
-                  <span class="hint">DokDrop doesn't sell goods — you pay the supplier directly. We just handle the run.</span>
+                  <span class="hint">DokDrop doesn't sell goods. You pay the supplier directly, and we just handle the run.</span>
                 </div>
 
                 <div class="field">
@@ -202,11 +202,11 @@
 
           </div>
 
-          <button type="submit" class="btn btn-primary btn-block" style="margin-top:var(--sp-6);">Send request — we confirm in 15 min</button>
+          <button type="submit" class="btn btn-primary btn-block" style="margin-top:var(--sp-6);">Send request (we confirm in 15 min)</button>
 
           <div class="form-status" id="form-status" tabindex="-1">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Request received. We'll confirm your delivery fee and dispatch a runner shortly — by phone or email.</span>
+            <span>Request received. We'll confirm your delivery fee and dispatch a runner shortly, by phone or email.</span>
           </div>
         </form>
 
